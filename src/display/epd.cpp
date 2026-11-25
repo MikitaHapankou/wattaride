@@ -4,10 +4,15 @@
 // #include <epd_driver.h>
 
 bool EpdDriver::init() {
+    uint32_t start = millis();
     // 1. Power on the EPD and wait for the panel to be ready.
+    while (millis() - start < initTimeoutMs_) {
+        // Panel-ready handshake goes here once the vendor driver is linked.
+        initialized_ = true;
+        break;
+    }
     // 2. Set rotation (landscape) and allocate the frame buffer.
     // 3. Clear the buffer to white and push a full refresh.
-    initialized_ = true;
     clear();
     return initialized_;
 }

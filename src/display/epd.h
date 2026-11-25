@@ -15,4 +15,5 @@ public:
 
 private:
     bool initialized_ = false;
+    uint32_t initTimeoutMs_ = 3000;
 };
