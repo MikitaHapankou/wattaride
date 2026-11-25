@@ -1,7 +1,9 @@
 #include <Arduino.h>
 #include "display/epd.h"
+#include "ui/ride_view.h"
 
 EpdDriver epd;
+RideView rideView(epd);
 
 void setup() {
     Serial.begin(115200);
@@ -11,10 +13,9 @@ void setup() {
         return;
     }
 
-    epd.clear();
-    epd.drawTestPattern();
-    epd.refresh(true);
+    rideView.show();   // restore ride view after reboot
 }
 
 void loop() {
+    rideView.update(); // partial refresh at 1-2 Hz
 }
