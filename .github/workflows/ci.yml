@@ -1,0 +1,17 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  project-structure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify firmware project structure
+        run: |
+          test -f platformio.ini
+          test -d src
+          grep -q "esp32-s3-devkitc-1" platformio.ini
+          echo "Project structure OK"
