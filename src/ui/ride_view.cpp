@@ -1,8 +1,5 @@
 #include "ui/ride_view.h"
-
-namespace {
-    constexpr uint16_t REFRESH_MS = 500; // 2 Hz
-}
+#include "config.h"
 
 void RideView::show() {
     // Draw all ride fields. Missing data is rendered as "—".
@@ -18,7 +15,7 @@ void RideView::show() {
 
 void RideView::update() {
     uint32_t now = millis();
-    if (now - lastRefreshMs_ < REFRESH_MS) {
+    if (now - lastRefreshMs_ < config::REFRESH_MS) {
         return;
     }
     lastRefreshMs_ = now;
@@ -31,7 +28,7 @@ void RideView::markDirty() {
 }
 
 void RideView::drawField(const char* label, const char* value) {
-    // Position label and value using the fixed font sizes (72/28/18).
+    // Position label and value using config::FONT_SPEED_LG / FONT_FIELD_MD / FONT_UNIT_SM.
     (void)label;
     (void)value;
 }
