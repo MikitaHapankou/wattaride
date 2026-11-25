@@ -22,3 +22,7 @@
 
 - E-ink refresh at 1–2 Hz keeps average draw low; ESP32-S3 enters light sleep between refreshes.
 - 1S Li-Po (≈1200 mAh) sized for ≥10 h with GNSS at 1 Hz.
+
+## Sign-off
+
+Approved by the team at the Sprint 1 kickoff.
