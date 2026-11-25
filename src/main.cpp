@@ -1,11 +1,20 @@
 #include <Arduino.h>
+#include "display/epd.h"
+
+EpdDriver epd;
 
 void setup() {
     Serial.begin(115200);
-    delay(200);
-    Serial.println("WattaRide firmware boot");
+
+    if (!epd.init()) {
+        Serial.println("EPD init failed");
+        return;
+    }
+
+    epd.clear();
+    epd.drawTestPattern();
+    epd.refresh(true);
 }
 
 void loop() {
-    // Main loop placeholder
 }
